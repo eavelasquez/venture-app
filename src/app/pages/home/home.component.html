@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 text-muted" *ngFor="let category of categories | async" [routerLink]="['/home']" [queryParams]="{ category: category.slug }">
+        <i [class]="category.icon" aria-hidden="true"></i> {{category.name}}
+      </a>
+    </nav>
+  </div>
+
+  <div class="jumbotron p-2 p-md-3 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">Venture App</h1>
+      <p class="lead my-3">¿Quisieras registrar un emprendimiento?</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="media col-6 my-3" *ngFor="let venture of ventures | async">
+      <i class="{{getIcon(venture.category)}} mr-3" aria-hidden="true"></i>
+      <div class="media-body d-flex justify-content-between align-items-center">
+        <div class="pl-3 flex-auto text-black">
+          <p class="my-0">
+            <a href="https://www.instagram.com/{{venture.account}}" class="text-decoration-none text-dark text-lowercase font-weight-bold" target="_blank" rel="noopener noreferrer">
+              @{{venture.account}}
+            </a>
+          </p>
+          <p class="my-0">
+            <a href="https://api.whatsapp.com/send?phone=57{{venture.phone}}&amp;text=👋🏻 Me gusta uno de tus productos. ¿Me puedes dar más información?"
+              class="text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">
+              (+57) {{venture.phone}}
+            </a>
+          </p>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/{{venture.account}}" class="text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card-columns">
+      <div class="card" *ngFor="let venture of ventures">
+        <img class="card-img-top" src="..." alt="logo">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="https://www.instagram.com/{{venture.account}}" class="text-decoration-none text-dark block text-lowercase font-weight-bold" target="_blank" rel="noopener noreferrer">
+              @{{venture.account}}
+            </a>
+          </h5>
+          <p class="card-text">
+            <a href="https://api.whatsapp.com/send?phone=57{{venture.phone}}&amp;text=👋🏻 Me gusta uno de tus productos. ¿Me puedes dar más información?" class="text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">
+              (+57) {{venture.phone}}
+            </a>
+          </p>
+        </div>
+        <div class="card-footer text-right py-0">
+          <small class="text-muted">
+            <a href="https://www.instagram.com/{{venture.account}}" class="text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+
+  <div class="col-12">
+    <ul class="list-group list-group-flush row">
+      <li class="list-group-item d-flex justify-content-between align-items-center col-6"
+        *ngFor="let venture of ventures">
+        <img class="img-fluid img-thumbnail" src="" alt="logo">
+        <div class="pl-3 flex-auto text-black">
+          <p class="my-0">
+            <a href="https://www.instagram.com/{{venture.account}}"
+              class="text-decoration-none text-dark block text-lowercase font-weight-bold" target="_blank"
+              rel="noopener noreferrer">
+              <span class="db fw6 lh-title ttl">@{{venture.account}}</span>
+            </a>
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=57{{venture.phone}}&amp;text=👋🏻 Me gusta uno de tus productos. ¿Me puedes dar más información?"
+            class="text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">
+            (+57) {{venture.phone}}
+          </a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/{{venture.account}}" class="text-decoration-none text-dark"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div> -->

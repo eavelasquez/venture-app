@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="py-2 text-center">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message.length && success">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="message.length && !success">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h2>Agrega un nuevo emprendimiento</h2>
+    <p class="lead">
+      Si tienes o conoces un emprendimiento que quisieras agregar para aumentar su visibilidad, llena los siguientes
+      campos.
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form #form="ngForm" class="needs-validation" novalidate autocomplete="off">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="account">Cuenta de Instagram</label>
+            <input type="text" class="form-control ng-untouched ng-pristine ng-invalid" [(ngModel)]="venture.account" name="account" #account="ngModel" id="account" required>
+            <div class="alert alert-danger" *ngIf="account.invalid && (account.dirty || account.touched)">
+              {{getErrorMessage(account)}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="phone">Número de teléfono</label>
+            <input type="tel" class="form-control ng-untouched ng-pristine ng-invalid" [(ngModel)]="venture.phone" name="phone" #phone="ngModel" id="phone" minlength="10" maxlength="16" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" required>
+            <div class="alert alert-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+              {{getErrorMessage(phone)}}
+            </div>
+          </div>
+          <div class="col-md-12 mb-1">
+            <select class="form-control" [(ngModel)]="venture.category" name="category" #category="ngModel" id="category" aria-label="Selecciona una categoría" aria-describedby="categoryHelp">
+              <option selected>Selecciona una categoría</option>
+              <option [value]="category.slug" *ngFor="let category of categories | async">{{category.name}}</option>
+            </select>
+            <small id="categoryHelp" class="form-text text-muted">
+              Opcional
+            </small>
+          </div>
+        </div>
+        <hr class="mb-3">
+        <button class="btn btn-outline-dark btn-lg btn-block" type="submit" (click)="onSubmit(form)">CONTINUAR</button>
+      </form>
+    </div>
+  </div>
+</div>
