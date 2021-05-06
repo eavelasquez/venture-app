@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "friendlychat-38809": {
+      "hosting": {
+        "venture-app": [
+          "friendlychat-38809"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "friendlychat-38809"
+  }
+}
